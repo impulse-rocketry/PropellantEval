@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta6 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Gibbs iteration equations</TITLE>
+<META NAME="description" CONTENT="Gibbs iteration equations">
+<META NAME="keywords" CONTENT="cpropep">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta6">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cpropep.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="up" HREF="cpropep.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html39"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html37"
+  HREF="cpropep.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html31"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html40"
+  HREF="node4.html">Reduced Gibbs iteration equations</A>
+<B> Up:</B> <A NAME="tex2html38"
+  HREF="cpropep.html">cpropep</A>
+<B> Previous:</B> <A NAME="tex2html32"
+  HREF="node2.html">Equations describing chemical equilibria</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00030000000000000000">
+Gibbs iteration equations</A>
+</H1>
+
+<P>
+In order to solve for corrections to initial estimate of composition
+<IMG
+ WIDTH="19" HEIGHT="28" ALIGN="MIDDLE" BORDER="0"
+ SRC="img24.png"
+ ALT="$ n_j$">, Lagrangian multiplier <IMG
+ WIDTH="18" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img18.png"
+ ALT="$ \lambda_i$">, moles n, and temperature T,
+we will use a descent Newton-Raphson method. This method involves a Taylor
+series expansion of the equation and use the terms of the first
+order. The correction variables are <!-- MATH
+ $\Delta \ln{n_j}$
+ -->
+<IMG
+ WIDTH="51" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$ \Delta \ln{n_j}$"> for the gases,
+<!-- MATH
+ $\Delta n_j$
+ -->
+<IMG
+ WIDTH="33" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img26.png"
+ ALT="$ \Delta n_j$"> for the condensed species, <!-- MATH
+ $\Delta \ln{n}$
+ -->
+<IMG
+ WIDTH="44" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img27.png"
+ ALT="$ \Delta \ln{n}$">, <!-- MATH
+ $\pi_i =
+-\frac{\lambda_i}{RT}$
+ -->
+<IMG
+ WIDTH="74" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img28.png"
+ ALT="$ \pi_i =
+-\frac{\lambda_i}{RT}$"> the dimensionless Lagrangian multipliers and
+<!-- MATH
+ $\Delta \ln{T}$
+ -->
+<IMG
+ WIDTH="46" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img29.png"
+ ALT="$ \Delta \ln{T}$">.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="deltalnnj"></A><!-- MATH
+ \begin{equation}
+\Delta \ln{n_j} - \sum_{i=1}^{l}{a_{ij}\pi_i} - \Delta \ln{n} - \left[ \frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = -\frac{\mu_j}{RT} \quad j = 1,...,m
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="475" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$\displaystyle \Delta \ln{n_j} - \sum_{i=1}^{l}{a_{ij}\pi_i} - \Delta \ln{n} - \...
+... \frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = -\frac{\mu_j}{RT} \quad j = 1,...,m$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(12)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+-\sum_{i=1}^{l}{a_{ij}\pi_i}-\left[\frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = -\frac{\mu_j}{RT} \quad j = m+1,...,n
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="390" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$\displaystyle -\sum_{i=1}^{l}{a_{ij}\pi_i}-\left[\frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = -\frac{\mu_j}{RT} \quad j = m+1,...,n$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(13)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="first"></A><!-- MATH
+ \begin{equation}
+\sum_{j=1}^{m}{a_{kj}n_j}\Delta\ln{n_j} + \sum_{j=m+1}^{n}{a_{kj}}\Delta n_j = k_k^0 - b_k \quad k = 1,...,l
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="390" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.png"
+ ALT="$\displaystyle \sum_{j=1}^{m}{a_{kj}n_j}\Delta\ln{n_j} + \sum_{j=m+1}^{n}{a_{kj}}\Delta n_j = k_k^0 - b_k \quad k = 1,...,l$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(14)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\sum_{j=1}^{m}{n_j}\Delta \ln{n_j} - n\Delta \ln{n} =n-\sum_{j=1}^{m}{n_j}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="256" HEIGHT="60" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.png"
+ ALT="$\displaystyle \sum_{j=1}^{m}{n_j}\Delta \ln{n_j} - n\Delta \ln{n} =n-\sum_{j=1}^{m}{n_j}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(15)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\sum_{j=1}^{m}
+{\left[\frac{n_j(H_T^0)_j}{RT}\right]}\Delta
+\ln{n_j}+\sum_{j=m+1}^{n}{\left[\frac{(H_T^0)_j}{RT}\right]}\Delta{n_j}+\left[\sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}}\right]\Delta
+\ln{T}=\frac{h_0-h}{RT}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="555" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img34.png"
+ ALT="$\displaystyle \sum_{j=1}^{m} {\left[\frac{n_j(H_T^0)_j}{RT}\right]}\Delta \ln{n...
+...eft[\sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}}\right]\Delta \ln{T}=\frac{h_0-h}{RT}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(16)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><A NAME="last"></A><!-- MATH
+ \begin{equation}
+\sum_{j=1}^{m}
+{\left(\frac{n_jS_j}{R}\right)}\Delta
+\ln{n_j}+\sum_{j=m+1}^{n}{\left[\frac{(S_T^0)_j}{R}\right]}\Delta{n_j}+\left[\sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}}\right]\Delta
+\ln{T}=\frac{s_0-s}{R}+n-\sum_{j=1}^{m}{n_j}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="616" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$\displaystyle \sum_{j=1}^{m} {\left(\frac{n_jS_j}{R}\right)}\Delta \ln{n_j}+\su...
+...rac{n_j(C_p^0)_j}{R}}\right]\Delta \ln{T}=\frac{s_0-s}{R}+n-\sum_{j=1}^{m}{n_j}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(17)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html39"
+  HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html37"
+  HREF="cpropep.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html31"
+  HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html40"
+  HREF="node4.html">Reduced Gibbs iteration equations</A>
+<B> Up:</B> <A NAME="tex2html38"
+  HREF="cpropep.html">cpropep</A>
+<B> Previous:</B> <A NAME="tex2html32"
+  HREF="node2.html">Equations describing chemical equilibria</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Antoine Lefebvre
+2000-03-26
+</ADDRESS>
+</BODY>
+</HTML>

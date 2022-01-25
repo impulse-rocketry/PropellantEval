@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta6 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>equilibrium</TITLE>
+<META NAME="description" CONTENT="equilibrium">
+<META NAME="keywords" CONTENT="cpropep">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta6">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cpropep.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html71"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html69"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html63"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html72"
+  HREF="node7.html">Iterative matrix</A>
+<B> Up:</B> <A NAME="tex2html70"
+  HREF="node5.html">Cpropep functions description</A>
+<B> Previous:</B> <A NAME="tex2html64"
+  HREF="node5.html">Cpropep functions description</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00051000000000000000">
+equilibrium</A>
+</H2>
+
+<P>
+This function is responsible to compute the entire equilibrium
+problem. It works in the following way.
+
+<OL>
+<LI>Find a first approximation of the moles number considering only
+gazes.
+</LI>
+<LI>Fill the matrix of the reduced Gibbs iteration equation.
+</LI>
+<LI>Solve the matrix
+	
+<UL>
+<LI>If the matrix is singular
+	
+</LI>
+</UL>
+
+<P>
+</LI>
+<LI>Compute the new approximation using the matrix solution 
+<BR>
+<P>
+First, the control factor that should limit the speed of
+	convergence to avoid negative mol number for gazes. 
+<BR>	<!-- MATH
+ \begin{displaymath}
+\lambda_1 = \frac{2}{\text{max}(\left|\Delta \ln{T}\right|,
+\left|\Delta \ln{n}\right|, \left|\Delta \ln{n_j}\right|)} \qquad (j=1,2,...,m)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="403" HEIGHT="49" ALIGN="MIDDLE" BORDER="0"
+ SRC="img49.png"
+ ALT="$\displaystyle \lambda_1 = \frac{2}{\text{max}(\left\vert\Delta \ln{T}\right\ver...
+... \ln{n}\right\vert, \left\vert\Delta \ln{n_j}\right\vert)} \qquad (j=1,2,...,m)$">
+</DIV><P></P> 
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\lambda_2=\text{min}\left|
+\frac{-\ln{(\frac{n_j}{n})}-9.2103404}{\Delta \ln{n_j} - \Delta \ln{n}}\right|
+\qquad (j=1,2,...,m)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="36" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img50.png"
+ ALT="$\displaystyle \lambda_2=$">min<IMG
+ WIDTH="306" HEIGHT="56" ALIGN="MIDDLE" BORDER="0"
+ SRC="img51.png"
+ ALT="$\displaystyle \left\vert
+\frac{-\ln{(\frac{n_j}{n})}-9.2103404}{\Delta \ln{n_j} - \Delta \ln{n}}\right\vert
+\qquad (j=1,2,...,m)$">
+</DIV><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\lambda = \text{min}(1, \lambda_1, \lambda_2)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="29" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img52.png"
+ ALT="$\displaystyle \lambda =$">&nbsp; &nbsp;min<IMG
+ WIDTH="71" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img53.png"
+ ALT="$\displaystyle (1, \lambda_1, \lambda_2) $">
+</DIV><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+n_j = e^{( \ln{n_j} + \lambda \Delta \ln{n_j})} \qquad
+(j=1,2,...,m)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="279" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img54.png"
+ ALT="$\displaystyle n_j = e^{( \ln{n_j} + \lambda \Delta \ln{n_j})} \qquad
+(j=1,2,...,m)$">
+</DIV><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+n_j = n_j + \lambda \Delta \ln{n_j} \qquad (j=m+1,...,n)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="285" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img55.png"
+ ALT="$\displaystyle n_j = n_j + \lambda \Delta \ln{n_j} \qquad (j=m+1,...,n)$">
+</DIV><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+n = e^{(\ln{n} + \lambda \Delta \ln{T})}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="125" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img56.png"
+ ALT="$\displaystyle n = e^{(\ln{n} + \lambda \Delta \ln{T})}$">
+</DIV><P></P>
+
+<P>
+if it is a non-fixed temperature problem,
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+T = e^{(\ln{T} + \lambda \Delta \ln{T})}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="128" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img57.png"
+ ALT="$\displaystyle T = e^{(\ln{T} + \lambda \Delta \ln{T})}$">
+</DIV><P></P>
+
+<P>
+</LI>
+<LI>Check for convergence
+<BR>
+The iteration procedure stop when the following criteria are
+satisfy
+<BR>
+<P>
+<!-- MATH
+ \begin{displaymath}
+\frac{n_j\left|\Delta
+\ln{n_j}\right|}{\underset{j=1}{\overset{m}{\sum}} n_j} \leq 0.5\times
+10^{-5} \qquad (j=1,...,m)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="299" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img58.png"
+ ALT="$\displaystyle \frac{n_j\left\vert\Delta
+\ln{n_j}\right\vert}{\underset{j=1}{\overset{m}{\sum}} n_j} \leq 0.5\times
+10^{-5} \qquad (j=1,...,m)$">
+</DIV><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\frac{\left|\Delta {n_j}\right|}{\underset{j=1}{\overset{m}{\sum}}
+n_j} \leq 0.5\times
+10^{-5} \qquad (j=1,...,n)
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="257" HEIGHT="82" ALIGN="MIDDLE" BORDER="0"
+ SRC="img59.png"
+ ALT="$\displaystyle \frac{\left\vert\Delta {n_j}\right\vert}{\underset{j=1}{\overset{m}{\sum}}
+n_j} \leq 0.5\times
+10^{-5} \qquad (j=1,...,n)$">
+</DIV><P></P>
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\left|\Delta \ln{n}\right| \leq 0.5\times10^{-5}
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="147" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img60.png"
+ ALT="$\displaystyle \left\vert\Delta \ln{n}\right\vert \leq 0.5\times10^{-5}$">
+</DIV><P></P>
+
+<P>
+If there is condensed species which concentration is negative,
+	they should be discard from the list of considered species and
+	convergence to a new equilibrium is obtain.
+
+<P>
+</LI>
+<LI>Test for condensed phases
+<BR>
+For each possible condensed species, the following criteria
+determine if a species should be include. This criteria check if the
+inclusion of the condensed decrease free energy. If more than one
+condensed satusfy the criterium, only the most negative should be
+include. This process is repeated until all condensed have been
+discard or included.
+
+<P>
+<!-- MATH
+ \begin{displaymath}
+\frac{\delta{G}}{\delta{n_j}}=\left( \frac{\mu_j^0}{RT}\right)_c -
+\sum_{i=1}^{l}{\pi_i a_{ij}} < 0
+\end{displaymath}
+ -->
+<P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="220" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img61.png"
+ ALT="$\displaystyle \frac{\delta{G}}{\delta{n_j}}=\left( \frac{\mu_j^0}{RT}\right)_c -
+\sum_{i=1}^{l}{\pi_i a_{ij}} &lt; 0$">
+</DIV><P></P>
+
+<P>
+</LI>
+</OL>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html71"
+  HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html69"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html63"
+  HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html72"
+  HREF="node7.html">Iterative matrix</A>
+<B> Up:</B> <A NAME="tex2html70"
+  HREF="node5.html">Cpropep functions description</A>
+<B> Previous:</B> <A NAME="tex2html64"
+  HREF="node5.html">Cpropep functions description</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Antoine Lefebvre
+2000-03-26
+</ADDRESS>
+</BODY>
+</HTML>

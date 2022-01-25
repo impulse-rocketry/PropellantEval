@@ -1,0 +1,111 @@
+%\documentclass[10pt]{article}
+
+%\usepackage{amsmath}
+%\usepackage[latin1]{inputenc}
+
+%\usepackage{vmargin, euscript, portland}
+
+%\begin{document}
+
+
+\begin{landscape}
+
+\begin{tabular}{|l|llll|lll|l|l|l|}
+
+\hline
+
+ & $\pi_1$ & $\pi_2$ & --- & $\pi_l$ & $\Delta n_{m+1}$ & --- &
+ $\Delta n_n$ & $\Delta \ln{n}$ & $\Delta \ln{T}$ & Right side \\
+
+ &  & & & & & & &  & & \\
+
+\hline
+
+ & $ \underset{j=1}{\overset{m}{\sum}}{a_{1j}a_{1j}n_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{1j}a_{2j}n_j} $ & --- &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{1j}a_{lj}n_j} $ & $a_1,m+1$ &
+ --- & $a_{1n}$ & 
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{1j}n_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{1j}n_j\EuScript{H}_j} $ & $ (b_1^0 -
+ b_1)+\underset{j=1}{\overset{m}{\sum}}{a_{1j}n_j\EuScript{G}_j} $ \\
+
+
+& $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}a_{1j}n_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}a_{2j}n_j} $ & --- &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}a_{lj}n_j} $ & $a_2,m+1$ &
+ --- & $a_{2n}$ & 
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}n_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}n_j\EuScript{H}_j} $ & $ (b_2^0 -
+ b_2)+\underset{j=1}{\overset{m}{\sum}}{a_{2j}n_j\EuScript{G}_j} $ \\
+
+
+ & ------------ & ------------ & --- & ------------ & -------- & --- &
+ --- & ------------ & ----------- & --------------- \\
+
+
+& $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}a_{1j}n_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}a_{2j}n_j} $ & --- &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}a_{lj}n_j} $ & $a_l,m+1$ &
+ --- & $a_{ln}$ & 
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}n_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}n_j\EuScript{H}_j} $ & $ (b_2^0 -
+ b_2)+\underset{j=1}{\overset{m}{\sum}}{a_{lj}n_j\EuScript{G}_j} $ \\
+
+\hline
+
+ & $a_{1, m+1}$ & $a_{2,m+1}$ & --- & $a_{l,m+1}$ & 0 & --- & 0 & 0 &
+$\EuScript{H}_{m+1}$ & $\EuScript{G}_{m+1}$ \\
+
+ & ------------ & ------------ & --- & ------------ & -------- & --- &
+ --- & --------- & ------------ & --------------- \\
+
+ & $a_{1n}$ & $a_{2n}$ & --- & $a_{ln}$ & 0 & --- & 0 & 0 &
+$\EuScript{H}_{n}$ & $\EuScript{G}_{n}$ \\
+
+\hline
+
+ & $ \underset{j=1}{\overset{m}{\sum}}{a_{1j}n_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}n_j} $ & --- &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}n_j} $ & 0 &
+ --- & 0 & 
+ $ \underset{j=1}{\overset{m}{\sum}}{n_j} - n$ &
+ $ \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{H}_j} $ & $ n -
+ \underset{j=1}{\overset{m}{\sum}}{n_j} + \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{G}_J}$ \\
+
+\hline
+
+
+& $ \underset{j=1}{\overset{m}{\sum}}{a_{1j}n_j\EuScript{H}_j} $ &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}n_j\EuScript{H}_j} $ & --- &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}n_j\EuScript{H}_j} $ & $\EuScript{H}_{m+1}$ &
+ --- & $\EuScript{H}_n$ & 
+ $ \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{H}_j}$ &
+ $ \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{C}_j} + \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{H}_j\EuScript{H}_j}
+ $ & $\EuScript{H}_0 - \EuScript{H} + \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{H}_j\EuScript{G}_J}$ \\
+
+
+
+\hline
+
+ & $
+ \underset{j=1}{\overset{m}{\sum}}{a_{1j}n_j\EuScript{S}_j} $ & 
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{2j}n_j\EuScript{S}_j} $ & --- &
+ $ \underset{j=1}{\overset{m}{\sum}}{a_{lj}n_j\EuScript{S}_j} $ & $\EuScript{S}_{m+1}$ &
+ --- & $\EuScript{S}_n$ & 
+ $ \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{S}_j}$ &
+ $ \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{C}_j} + \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{H}_j\EuScript{S}_j}
+ $ & $\EuScript{S}_0 - \EuScript{S} + n -
+ \underset{j=1}{\overset{m}{\sum}}{n_j} + \underset{j=1}{\overset{m}{\sum}}{n_j\EuScript{S}_j\EuScript{G}_J}$ \\
+
+\hline
+
+\end{tabular}
+
+%\footnotetext[1]{Column not used for assigned temperature and pressure.}
+%\footnotetext[2]{Row used only for assigned enthalpy and pressure.}
+%\footnotetext[3]{Row used only for assigned entropy and pressure.}
+
+\end{landscape}
+
+
+%\end{document}

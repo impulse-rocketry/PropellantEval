@@ -1,0 +1,16 @@
+{
+    "FormattingOptions": {
+      "NewLinesForBracesInMethods": false,
+      "NewLinesForBracesInProperties": false,
+      "NewLinesForBracesInAccessors": false,
+      "NewLinesForBracesInAnonymousMethods": false,
+      "NewLinesForBracesInControlBlocks": false,
+      "NewLinesForBracesInObjectCollectionArrayInitializers": false,
+      "NewLinesForBracesInLambdaExpressionBody": false,
+      "NewLinesForBracesInTypes": false,
+      "NewLineForElse": false,
+      "IndentSwitchCaseSection": false,
+      "IndentSwitchSection": true,
+      "IndentSwitchCaseSectionWhenBlock": false
+    }
+  }

@@ -1,0 +1,300 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath}
+\usepackage[latin1]{inputenc}
+
+\usepackage{vmargin, euscript, portland}
+
+
+\newcommand{\abs}[1]{\left|#1\right|}
+\renewcommand{\exp}[1]{e^{#1}}
+
+\begin{document}
+
+
+\section*{Introduction}
+
+In the design of rocket motors, knowledge of the characteristics of the propellant used and combustion gases produced is essential.  It is possible through the use of software to calculate the theoretical performance of various propellants.  Software to do this already exists (e.g. the FORTRAN Propep), but is inflexible and difficult to understand and modify.  Therefore a new program, 'cpropep', coded in ANSI C is in development under the GPL, in an attempt to make such propellant characterisation software more accessible and easier to improve.
+
+This document will outline the methods used by cpropep to determine propellant characteristics.
+    
+\section{Equations describing chemical equilibria}
+
+The finding of chemical equilibrium through the reduction of free energy has been accepted as the simplest method for propellant characterisation for some time now, and so cpropep finds equilibrium through the minimisation of Giibs free energy.
+
+Considering an ideal gas and pure condensed phase, the equation of state for the mixture is
+
+\begin{equation}PV = nRT\end{equation}
+
+where $P$ is the pressure ($N/m^2$), V specific volume ($m^3/kg$), n
+moles, and T temperature (K).
+
+The variables V and n refer to gases only while the mass is for the
+entire mixture including condensed species.
+
+The molecular weight of the mixture is $M$ and is defined as
+
+\begin{equation}
+M = \frac{ \overset{n}{\underset{j=1}{\sum}}{n_j M_j}}{\overset{m}{\underset{j=1}{\sum}}{n_j}}
+\end{equation}
+
+
+For a mixture of $n$ species, the Gibbs free energy is given by
+
+\begin{equation}
+g = \sum_{j=1}^{n}{\mu_j n_j}
+\end{equation}
+
+and the chemical potential may be written
+
+\begin{equation}
+\mu_j = 
+    \begin{cases}
+	\mu_j^0 + RT\ln{(n_j/n)} + RT\ln{P_{atm}}& (j=1,...,m)\\
+	\mu_j^0& (j=m+1,...,n)
+    \end{cases}
+\end{equation}
+
+where $\mu_j^0$ is the chemical potential in the standard state. It is
+habitually defined  as
+
+\begin{equation}
+\mu^0 = H_T^0 + TS_T^0
+\end{equation}
+
+The equilibrium condition is the minimisation of free energy and is
+subject to the mass balance constraint:
+
+	\begin{equation}
+	b_i - b_i^0 = 0 \quad i = 1,...,l
+	\end{equation}
+
+where $b_i$ is the number of moles of one atom in the mixture and
+$b_i^0$ is the number of moles of the same atom of total reactants.
+	
+	\begin{equation}
+	b_i = \sum_{j=1}^{n}{a_{ij} n_j} \quad i = 1,...,l
+	\end{equation}
+
+ 
+We could now define a term $G$
+
+	\begin{equation}
+	G = g + \sum_{i=1}^{l}{\lambda_i (b_i - b_i^0)}
+	\end{equation}
+
+where $\lambda_i$ are Lagrangian multipliers. Taking the first
+derivative, we get
+
+\begin{equation}
+\delta G = \sum_{j=1}^{n}{\left(\mu_j + \sum_{i=1}^{l}{\lambda_i
+a_{ij}}\right)\delta n_j} + \sum_{i=1}^{l}{(b_i - b_i^0)\delta \lambda_i}=0
+\end{equation}
+
+
+The variations $\delta n_j$ and $\delta \lambda_i$ are independant and
+we get two conditions for equilibrium
+
+\begin{gather}
+\mu_j + \sum_{i=1}^{l}{\lambda_i a_{ij}} = 0 \quad j = 1,...,n \\
+b_i - b_i^0 = 0
+\end{gather}
+
+
+\section{Gibbs iteration equations}
+
+In order to improve out initial estimate of the composition $n_j$, Lagrangian miltiplier $\lambda_i$, moles n and temperature T we will use a descent Newton-Raphson method of finding successive approximations.  This method involves a Taylor
+series expansion of the equation and uses first order terms of the polynomial.  The correction variables used are $\Delta \ln{n_j}$ for the gases,
+$\Delta n_j$ for the condensed species, $\Delta \ln{n}$, $\pi_i =
+-\frac{\lambda_i}{RT}$ the dimensionless Lagrangian multipliers and
+$\Delta \ln{T}$.
+
+
+\begin{equation}
+\Delta \ln{n_j} - \sum_{i=1}^{l}{a_{ij}\pi_i} - \Delta \ln{n} - \left[ \frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = -\frac{\mu_j}{RT} \quad j = 1,...,m
+\label{deltalnnj}
+\end{equation}
+
+\begin{equation}
+-\sum_{i=1}^{l}{a_{ij}\pi_i}-\left[\frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = -\frac{\mu_j}{RT} \quad j = m+1,...,n
+\end{equation}
+
+\begin{equation}
+\sum_{j=1}^{m}{a_{kj}n_j}\Delta\ln{n_j} + \sum_{j=m+1}^{n}{a_{kj}}\Delta n_j = k_k^0 - b_k \quad k = 1,...,l
+\label{first}
+\end{equation}
+
+\begin{equation}
+\sum_{j=1}^{m}{n_j}\Delta \ln{n_j} - n\Delta \ln{n} =n-\sum_{j=1}^{m}{n_j}
+\end{equation}
+
+\begin{equation}
+\sum_{j=1}^{m}
+{\left[\frac{n_j(H_T^0)_j}{RT}\right]}\Delta
+\ln{n_j}+\sum_{j=m+1}^{n}{\left[\frac{(H_T^0)_j}{RT}\right]}\Delta{n_j}+\left[\sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}}\right]\Delta
+\ln{T}=\frac{h_0-h}{RT}
+\end{equation}
+
+\begin{equation}
+\sum_{j=1}^{m}
+{\left(\frac{n_jS_j}{R}\right)}\Delta
+\ln{n_j}+\sum_{j=m+1}^{n}{\left[\frac{(S_T^0)_j}{R}\right]}\Delta{n_j}+\left[\sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}}\right]\Delta
+\ln{T}=\frac{s_0-s}{R}+n-\sum_{j=1}^{m}{n_j}
+\label{last}
+\end{equation}
+
+\section{Reduced Gibbs iteration equations}
+The large number of equations that were presented in the last section
+can be reduced to a much smaller number by algebraic substitution. We
+substitute the expression for $\Delta \ln{n_j}$ of equation
+\ref{deltalnnj} into equations \ref{first} to \ref{last}.  The
+resulting equations are
+
+\begin{multline}
+\sum_{i=1}^{l}\sum_{j=1}^{m}{a_{kj}a_{ij}n_j\pi_i}+\sum_{j=m+1}^{n}{a_{kj}\Delta\ln{n_j}}+\sum_{j=1}^{m}{a_{kj}n_j\Delta\ln{n}}+\left[\sum_{j=1}^{m}{\frac{a_{kj}n_j(H_T^0)_j}{RT}}\right]\Delta\ln{T} = (b_k^0 - b_k) \\
++ \sum_{j=1}^{m}{ \frac{a_{kj}n_j\mu_j}{RT}} \quad (k = 1,...,l)
+\end{multline}
+
+\begin{equation}
+\sum_{i=1}^{l}{a_{ij}\pi_i} + \left[
+\frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = \frac{\mu_j}{RT} \quad
+(j=m+1,...,n)
+\end{equation}
+
+\begin{equation}
+\sum_{i=1}^{l}\sum_{j=1}^{m}{a_{ij}n_j\pi_i}+\left(
+\sum_{j=1}^{m}{n_j}-n\right)\Delta \ln{n} + \left[ \sum_{j=1}^{m}{
+\frac{n_j(H_T^0)_j}{RT}}\right]\Delta \ln{T} = n -
+\sum_{j=1}^{m}{n_j}+\sum_{j=1}^{m}{\frac{n_j\mu_j}{RT}}
+\end{equation}
+
+
+\begin{multline}
+\sum_{i=1}^{l} \left[
+\sum_{j=1}^{m}{\frac{a_{ij}n_j(H_T^0)_j}{RT}}
+\right]\pi_i
++\sum_{j=m+1}^{n}{ \left[\frac{(H_T^0)_j}{RT} \right] }\Delta \ln{n_j}+
+\left[ \sum_{j=1}^{m}{\frac{n_j(H_T^0)_j}{RT}} \right] \Delta \ln{n} \\
++\left[ \sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}} + \sum_{j=1}^{m}{
+\frac{n_j(H_T^0)_j^2}{R^2T^2}} \right] \Delta \ln{T} = \frac{h_o-h}{RT} + \sum_{j=1}^{m}{\frac{n_j(H_T^0)_j\mu_j}{R^2T^2}}
+\end{multline}
+
+\begin{multline}
+\sum_{i=1}^{l} \left[
+\sum_{j=1}^{m}{\frac{a_{ij}n_jS_j}{R}}
+\right]\pi_i
++\sum_{j=m+1}^{n}{ \left(\frac{S_j}{R} \right) }\Delta \ln{n_j}+
+\left[ \sum_{j=1}^{m}{\frac{n_jS_j}{R}} \right] \Delta \ln{n} \\
++\left[ \sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}} + \sum_{j=1}^{m}{
+\frac{n_j(H_T^0)_jS_j}{R^2T}} \right] \Delta \ln{T} = \frac{s_o-s}{R} 
++ n - \sum_{j=1}^{m}{n_j} +  \sum_{j=1}^{m}{\frac{n_jS_j\mu_j}{R^2T}}
+\end{multline}
+
+
+Those equations can be simulataneously solved to get a new
+estimate. Using those new symbols, a summary of those equations in the
+form of a matrix is presented in the second document.
+
+\begin{alignat}{4}
+\EuScript{H}_j = \frac{(H_T^0)_j}{RT} & \qquad \EuScript{H}   = \frac{h}{RT} \\
+\EuScript{G}_j = \frac{\mu_j}{RT} & \qquad \EuScript{H}_0 = \frac{h_0}{RT} \\
+\EuScript{S}_j = \frac{S_j}{R} & \qquad \EuScript{S}   = \frac{s}{R}\\
+\EuScript{C}_j = \frac{(C_p^0)_j}{R} & \qquad \EuScript{S}_0 = \frac{s_0}{R}
+\end{alignat}
+
+\section{Cpropep functions description}
+
+This section will briefly outline how cpropep functions, the data structures it uses and its basic functions.
+
+\subsection{equilibrium}
+
+This function solves for equilibrium.  It operates as follows: 
+\begin{enumerate}
+\item Find a first approximation of the number of moles present considering only
+gases.
+\item Fill the matrix of the reduced Gibbs iteration equations.
+\item Solve the matrix
+	\begin{itemize}
+	\item If the matrix is singular
+	\end{itemize}
+
+\item Compute the new approximation using solution to the matrix \\
+	
+	First, the control factor that should limit the speed of
+	convergence to avoid negative mol number for gases. \\
+	$$\lambda_1 = \frac{2}{\text{max}(\abs{\Delta \ln{T}},
+\abs{\Delta \ln{n}}, \abs{\Delta \ln{n_j}})} \qquad (j=1,2,...,m)$$ 	
+
+	$$\lambda_2=\text{min}\abs{
+\frac{-\ln{(\frac{n_j}{n})}-9.2103404}{\Delta \ln{n_j} - \Delta \ln{n}}}
+\qquad (j=1,2,...,m)$$
+
+	$$\lambda = \text{min}(1, \lambda_1, \lambda_2) $$
+
+	$$n_j = \exp{( \ln{n_j} + \lambda \Delta \ln{n_j})} \qquad
+(j=1,2,...,m)$$
+
+	$$n_j = n_j + \lambda \Delta \ln{n_j} \qquad (j=m+1,...,n)$$
+
+	$$ n = \exp{(\ln{n} + \lambda \Delta \ln{T})}$$
+
+	If it is a non-fixed temperature problem,
+
+	$$T = \exp{(\ln{T} + \lambda \Delta \ln{T})}$$
+
+\item Check for convergence\\
+	The iteration procedure stops when the following criteria are
+satisfied\\
+
+	$$\frac{n_j\abs{\Delta
+\ln{n_j}}}{\underset{j=1}{\overset{m}{\sum}} n_j} \leq 0.5\times
+10^{-5} \qquad (j=1,...,m)$$
+
+	$$\frac{\abs{\Delta {n_j}}}{\underset{j=1}{\overset{m}{\sum}}
+n_j} \leq 0.5\times 
+10^{-5} \qquad (j=1,...,n)$$
+
+	$$\abs{\Delta \ln{n}} \leq 0.5\times10^{-5}$$
+
+	If condensed species with negative concentrations are found, these should be discarded 	from the list of condensed species and testing for convergence resumed until a new 	equilibrium is obtained.
+
+\item Test for condensed phases\\
+	For each possible condensed species, the following criteron
+determines if the species should be included. This criterion checks if the
+inclusion of the condensed species decreases free energy. If more than one
+condensed species satisfies the criterion, only the most negative should be
+included. This process is repeated until all condensed species have been
+discarded or included.
+
+$$\frac{\delta{G}}{\delta{n_j}}=\left( \frac{\mu_j^0}{RT}\right)_c -
+\sum_{i=1}^{l}{\pi_i a_{ij}} < 0$$
+
+
+\end{enumerate}
+
+\subsection{Iterative matrix}
+
+In order to solve simultaneously the different equations, cpropep fills
+a matrix with the appropriate coefficients and solves the system using
+LU factorisation or Gaussian elimination.  A summary of equations used
+in matrix form is included below.
+
+It is important to note that depending on the type of problem, some
+cells of the matrix are not used. For fixed temperature/pressure, the column with
+$\Delta \ln{T}$ and the two last rows are not used.
+
+For the two other types of problem -- fixed enthalpy or fixed entropy,
+the column $\Delta \ln{T}$ is used with one of the two last rows. 
+
+\include{cpropep_a}
+
+\end{document}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta6 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Iterative matrix</TITLE>
+<META NAME="description" CONTENT="Iterative matrix">
+<META NAME="keywords" CONTENT="cpropep">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta6">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cpropep.css">
+
+<LINK REL="previous" HREF="node6.html">
+<LINK REL="up" HREF="node5.html">
+<LINK REL="next" HREF="node8.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html79"
+  HREF="node8.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html77"
+  HREF="node5.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html73"
+  HREF="node6.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html80"
+  HREF="node8.html">About this document ...</A>
+<B> Up:</B> <A NAME="tex2html78"
+  HREF="node5.html">Cpropep functions description</A>
+<B> Previous:</B> <A NAME="tex2html74"
+  HREF="node6.html">equilibrium</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H2><A NAME="SECTION00052000000000000000">
+Iterative matrix</A>
+</H2>
+
+<P>
+In order to solve simultaneously the different equations, cpropep fill
+a matrix with the appropriate coefficient and solve the system using
+the method of LU factorisation or gauss elimination. Here is a resume
+on the form of a matrix of the equations.
+
+<P>
+It is important to note that depending on the type of problem, some
+row are not used. For fixed temperature/pressure, the column with
+<!-- MATH
+ $\Delta \ln{T}$
+ -->
+<IMG
+ WIDTH="46" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img29.png"
+ ALT="$ \Delta \ln{T}$"> and the two last row are not used.
+
+<P>
+For the two other type of problem, fixed enthalpy or fixed entropy,
+the column <!-- MATH
+ $\Delta \ln{T}$
+ -->
+<IMG
+ WIDTH="46" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img29.png"
+ ALT="$ \Delta \ln{T}$"> is used with one of the two last row. 
+
+<P>
+
+<P>
+<BR>
+<IMG
+ WIDTH="1023" HEIGHT="355" ALIGN="BOTTOM" BORDER="0"
+ SRC="img62.png"
+ ALT="\begin{landscape}
+\par\begin{tabular}{\vert l\vert llll\vert lll\vert l\vert l\v...
+...Script{S}_j\EuScript{G}_J}$ \\
+\par\hline
+\par\end{tabular}\par\end{landscape}">
+<BR>
+
+<P>
+
+<P>
+<BR><HR>
+<ADDRESS>
+Antoine Lefebvre
+2000-03-26
+</ADDRESS>
+</BODY>
+</HTML>

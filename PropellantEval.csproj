@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>ImpulseRocketry.PropellantEval</PackageId>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>rc1</VersionSuffix>
+    <Title>PropellantEval</Title>
+    <Product>PropellantEval</Product>
+    <Authors>Antoine Lefebvre, Mark Pinese, Ben Voß</Authors>
+    <RepositoryUrl>https://github.com/impulse-rocketry/PropellantEval</RepositoryUrl>
+    <RespositoryType>git</RespositoryType>
+    <PackageIcon>Icon.png</PackageIcon>
+    <Summary>Program for computing thermodynamic properties of individual species and composition of species</Summary>
+    <Description>Program for computing thermodynamic properties of individual species and composition of species</Description>
+    <PackageDescription>Program for computing thermodynamic properties of individual species and composition of species</PackageDescription>
+    <Copyright>Copyright © 2000 Antoine Lefebvre, Mark Pinese. Copyright © 2022 Ben Voß</Copyright>
+    <Company>ImpulseRocketry</Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RootNamespace>ImpulseRocketry.PropellantEval</RootNamespace>
+    <AssemblyName>ImpulseRocketry.PropellantEval</AssemblyName>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta2.21617.1" />
+    <PackageReference Include="ImpulseRocketry.LibPropellantEval" Version="1.0.0-rc1" />
+  </ItemGroup>
+
+</Project>

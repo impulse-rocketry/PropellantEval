@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta6 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Reduced Gibbs iteration equations</TITLE>
+<META NAME="description" CONTENT="Reduced Gibbs iteration equations">
+<META NAME="keywords" CONTENT="cpropep">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta6">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="cpropep.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="up" HREF="cpropep.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+<!--Navigation Panel-->
+<A NAME="tex2html49"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html47"
+  HREF="cpropep.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html41"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html50"
+  HREF="node5.html">Cpropep functions description</A>
+<B> Up:</B> <A NAME="tex2html48"
+  HREF="cpropep.html">cpropep</A>
+<B> Previous:</B> <A NAME="tex2html42"
+  HREF="node3.html">Gibbs iteration equations</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00040000000000000000">
+Reduced Gibbs iteration equations</A>
+</H1>
+The large number of equation that were presented in the last section
+could be reduced to a much smaller number by algebric substitution. We
+substitute the expression for <!-- MATH
+ $\Delta \ln{n_j}$
+ -->
+<IMG
+ WIDTH="51" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img25.png"
+ ALT="$ \Delta \ln{n_j}$"> of equation
+<A HREF="node3.html#deltalnnj">12</A> into equation <A HREF="node3.html#first">14</A> to <A HREF="node3.html#last">17</A>. The
+resulting equations are
+
+<P>
+<P></P>
+<DIV ALIGN="RIGHT"><!-- MATH
+ \begin{multline}
+\sum_{i=1}^{l}\sum_{j=1}^{m}{a_{kj}a_{ij}n_j\pi_i}+\sum_{j=m+1}^{n}{a_{kj}\Delta\ln{n_j}}+\sum_{j=1}^{m}{a_{kj}n_j\Delta\ln{n}}+\left[\sum_{j=1}^{m}{\frac{a_{kj}n_j(H_T^0)_j}{RT}}\right]\Delta\ln{T} = (b_k^0 - b_k) \\
++ \sum_{j=1}^{m}{ \frac{a_{kj}n_j\mu_j}{RT}} \quad (k = 1,...,l)
+\end{multline}
+ -->
+<IMG
+ WIDTH="632" HEIGHT="124" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.png"
+ ALT="\begin{multline}
+\sum_{i=1}^{l}\sum_{j=1}^{m}{a_{kj}a_{ij}n_j\pi_i}+\sum_{j=m+1}...
+...
++ \sum_{j=1}^{m}{ \frac{a_{kj}n_j\mu_j}{RT}} \quad (k = 1,...,l)
+\end{multline}"></DIV>
+<BR CLEAR="ALL">
+<P><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\sum_{i=1}^{l}{a_{ij}\pi_i} + \left[
+\frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = \frac{\mu_j}{RT} \quad
+(j=m+1,...,n)
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="375" HEIGHT="66" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$\displaystyle \sum_{i=1}^{l}{a_{ij}\pi_i} + \left[ \frac{(H_T^0)_j}{RT}\right]\Delta \ln{T} = \frac{\mu_j}{RT} \quad (j=m+1,...,n)$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(18)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><!-- MATH
+ \begin{equation}
+\sum_{i=1}^{l}\sum_{j=1}^{m}{a_{ij}n_j\pi_i}+\left(
+\sum_{j=1}^{m}{n_j}-n\right)\Delta \ln{n} + \left[ \sum_{j=1}^{m}{
+\frac{n_j(H_T^0)_j}{RT}}\right]\Delta \ln{T} = n -
+\sum_{j=1}^{m}{n_j}+\sum_{j=1}^{m}{\frac{n_j\mu_j}{RT}}
+\end{equation}
+ -->
+<TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><IMG
+ WIDTH="612" HEIGHT="73" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$\displaystyle \sum_{i=1}^{l}\sum_{j=1}^{m}{a_{ij}n_j\pi_i}+\left( \sum_{j=1}^{m...
+...ght]\Delta \ln{T} = n - \sum_{j=1}^{m}{n_j}+\sum_{j=1}^{m}{\frac{n_j\mu_j}{RT}}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(19)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="RIGHT"><!-- MATH
+ \begin{multline}
+\sum_{i=1}^{l} \left[
+\sum_{j=1}^{m}{\frac{a_{ij}n_j(H_T^0)_j}{RT}}
+\right]\pi_i
++\sum_{j=m+1}^{n}{ \left[\frac{(H_T^0)_j}{RT} \right] }\Delta \ln{n_j}+
+\left[ \sum_{j=1}^{m}{\frac{n_j(H_T^0)_j}{RT}} \right] \Delta \ln{n} \\
++\left[ \sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}} + \sum_{j=1}^{m}{
+\frac{n_j(H_T^0)_j^2}{R^2T^2}} \right] \Delta \ln{T} = \frac{h_o-h}{RT} + \sum_{j=1}^{m}{\frac{n_j(H_T^0)_j\mu_j}{R^2T^2}}
+\end{multline}
+ -->
+<IMG
+ WIDTH="534" HEIGHT="132" ALIGN="BOTTOM" BORDER="0"
+ SRC="img39.png"
+ ALT="\begin{multline}
+\sum_{i=1}^{l} \left[
+\sum_{j=1}^{m}{\frac{a_{ij}n_j(H_T^0)_j}{...
+...rac{h_o-h}{RT} + \sum_{j=1}^{m}{\frac{n_j(H_T^0)_j\mu_j}{R^2T^2}}
+\end{multline}"></DIV>
+<BR CLEAR="ALL">
+<P><P></P>
+
+<P>
+<P></P>
+<DIV ALIGN="RIGHT"><!-- MATH
+ \begin{multline}
+\sum_{i=1}^{l} \left[
+\sum_{j=1}^{m}{\frac{a_{ij}n_jS_j}{R}}
+\right]\pi_i
++\sum_{j=m+1}^{n}{ \left(\frac{S_j}{R} \right) }\Delta \ln{n_j}+
+\left[ \sum_{j=1}^{m}{\frac{n_jS_j}{R}} \right] \Delta \ln{n} \\
++\left[ \sum_{j=1}^{n}{\frac{n_j(C_p^0)_j}{R}} + \sum_{j=1}^{m}{
+\frac{n_j(H_T^0)_jS_j}{R^2T}} \right] \Delta \ln{T} = \frac{s_o-s}{R}
++ n - \sum_{j=1}^{m}{n_j} +  \sum_{j=1}^{m}{\frac{n_jS_j\mu_j}{R^2T}}
+\end{multline}
+ -->
+<IMG
+ WIDTH="551" HEIGHT="153" ALIGN="BOTTOM" BORDER="0"
+ SRC="img40.png"
+ ALT="\begin{multline}
+\sum_{i=1}^{l} \left[
+\sum_{j=1}^{m}{\frac{a_{ij}n_jS_j}{R}}
+\r...
+... - \sum_{j=1}^{m}{n_j} + \sum_{j=1}^{m}{\frac{n_jS_j\mu_j}{R^2T}}
+\end{multline}"></DIV>
+<BR CLEAR="ALL">
+<P><P></P>
+
+<P>
+Those equation can be simulataneously solve to get a new
+estimate. Using those new symbols, a resume of those equations in the
+form of a matrix is presented in the second document.
+
+<P>
+<P></P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="91" HEIGHT="55" ALIGN="MIDDLE" BORDER="0"
+ SRC="img41.png"
+ ALT="$\displaystyle \EuScript{H}_j = \frac{(H_T^0)_j}{RT}$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="98" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$\displaystyle \qquad \EuScript{H} = \frac{h}{RT}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(20)</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="68" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img43.png"
+ ALT="$\displaystyle \EuScript{G}_j = \frac{\mu_j}{RT}$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="105" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img44.png"
+ ALT="$\displaystyle \qquad \EuScript{H}_0 = \frac{h_0}{RT}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(21)</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="60" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img45.png"
+ ALT="$\displaystyle \EuScript{S}_j = \frac{S_j}{R}$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="81" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img46.png"
+ ALT="$\displaystyle \qquad \EuScript{S} = \frac{s}{R}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(22)</TD></TR>
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="83" HEIGHT="58" ALIGN="MIDDLE" BORDER="0"
+ SRC="img47.png"
+ ALT="$\displaystyle \EuScript{C}_j = \frac{(C_p^0)_j}{R}$"></TD>
+<TD NOWRAP ALIGN="LEFT"><IMG
+ WIDTH="90" HEIGHT="43" ALIGN="MIDDLE" BORDER="0"
+ SRC="img48.png"
+ ALT="$\displaystyle \qquad \EuScript{S}_0 = \frac{s_0}{R}$"></TD>
+<TD NOWRAP WIDTH="10" ALIGN="RIGHT">
+(23)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html49"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next.png"></A> 
+<A NAME="tex2html47"
+  HREF="cpropep.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up.png"></A> 
+<A NAME="tex2html41"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html50"
+  HREF="node5.html">Cpropep functions description</A>
+<B> Up:</B> <A NAME="tex2html48"
+  HREF="cpropep.html">cpropep</A>
+<B> Previous:</B> <A NAME="tex2html42"
+  HREF="node3.html">Gibbs iteration equations</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+Antoine Lefebvre
+2000-03-26
+</ADDRESS>
+</BODY>
+</HTML>
