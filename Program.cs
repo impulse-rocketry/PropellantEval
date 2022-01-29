@@ -277,7 +277,7 @@ public class Program
                             var parts = Split(buffer);
                             var variable = parts[0];
                             var qt = parts[1];
-                            var unit = parts[2];
+                            var unit = parts.Length > 2 ? parts[2] : string.Empty;
 
                             var bufptr = variable[1..];
 
@@ -418,8 +418,6 @@ public class Program
 
     private static int Run(string fileName, int verbose)
     {
-        fileName = "input.pro";
-
         int i;
         var caseList = new Case[MAX_CASE];
         for (i = 0; i < MAX_CASE; i++)
